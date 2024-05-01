@@ -27,12 +27,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1304431258761154737}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.000016312852, z: 0}
   m_LocalScale: {x: 1.5, y: 1, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7122049080164800677}
+  m_Father: {fileID: 594031394978317539}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &879817657099304464
 MeshFilter:
@@ -236,7 +236,7 @@ Transform:
   m_GameObject: {fileID: 1974219896809729358}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 4.639984, z: 0}
+  m_LocalPosition: {x: 0, y: 29.04, z: 0}
   m_LocalScale: {x: 7.0885596, y: 6.7399597, z: 1.35}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12566,7 +12566,7 @@ GameObject:
   - component: {fileID: 6220352516083161172}
   - component: {fileID: 839311192025908953}
   - component: {fileID: 2902345500795709444}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ButtonButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12908,7 +12908,6 @@ Transform:
   m_LocalScale: {x: 4.72, y: 0.76, z: 4.72}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4760439480404756843}
   - {fileID: 7985708942286550056}
   - {fileID: 594031394978317539}
   m_Father: {fileID: 267175341509428612}
@@ -25083,7 +25082,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 113
+  m_VersionIndex: 116
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -50025,6 +50024,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5009394877554892182}
+  - {fileID: 4760439480404756843}
   m_Father: {fileID: 7122049080164800677}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &278080767691633166

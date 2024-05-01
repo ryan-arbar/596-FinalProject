@@ -181,7 +181,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7983b3f90411cd542bc5b668a666a9c2, type: 2}
+  - {fileID: 2100000, guid: df2fad578af9d994fa481ff52b7b73b4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -554,10 +554,9 @@ GameObject:
   - component: {fileID: 5472740284258810813}
   - component: {fileID: 3361504930047282259}
   - component: {fileID: 5851100723437971987}
-  - component: {fileID: 1765759979502610895}
   - component: {fileID: 6623195667107620226}
   m_Layer: 0
-  m_Name: armless_procedural_animated_character_test
+  m_Name: armless_character_test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -573,7 +572,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.094, y: 77.512505, z: -2.981}
-  m_LocalScale: {x: 0.39999998, y: 0.39999998, z: 0.39999998}
+  m_LocalScale: {x: 1.5999999, y: 1.5999999, z: 1.5999999}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7645205096636151411}
@@ -1070,7 +1069,7 @@ MonoBehaviour:
   baseTransform: {fileID: 5472740284258810813}
   Hips: {fileID: 9153575034123561867}
   ScaleReferenceMode: 3
-  finalScaleReference: 0.5953281
+  finalScaleReference: 0.5953176
   finalScaleReferenceSqrt: 0.1
   customScaleReferenceValue: 0.5
   DelayedInitialization: 0
@@ -1126,27 +1125,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &1765759979502610895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9122033311879298159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dd13e53c7bacf9408e8cc84538e0dd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 2
-  runSpeed: 4
-  jumpForce: 4
-  canRun: 1
-  canJump: 1
-  canRotateCamera: 1
-  checkRadius: 0.23
-  groundCheckDistance: 0.2
-  isGrounded: 0
 --- !u!136 &6623195667107620226
 CapsuleCollider:
   m_ObjectHideFlags: 0
