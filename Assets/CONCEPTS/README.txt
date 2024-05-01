@@ -7,7 +7,7 @@ It's also so future me doesn't forget how this project works.
 room from the scene. This is so there is no conflict when others try to
 pull from the repository. You could also create a seperate scene and create there.
 That scene will be safe to push to the repository.
-TRY *NOT* TO MODIFY THE MAIN SCENE IF YOU CAN
+TRY *NOT* TO PUSH CHANGES TO THE MAIN SCENE IF YOU CAN, exclude it from your commit
 
 -Use the BlankRoom prefab in this folder to start creating the room. 
 It has the basics of what is currently in the game at this point in time. 
