@@ -7,6 +7,8 @@ TagManager:
   - InitialRoom
   - ExitDoor
   - CompletionMessage
+  - Carriable
+  - PickupCube
   layers:
   - Default
   - TransparentFX
@@ -17,9 +19,9 @@ TagManager:
   - 
   - wallLayer
   - Interactive
-  - 
-  - 
-  - 
+  - Indicator
+  - Trigger
+  - Carriable
   - 
   - 
   - 

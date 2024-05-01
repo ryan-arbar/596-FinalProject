@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2390702426099384623}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2558052778934547387}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 989985388162887868}
   - component: {fileID: 7057440667015157038}
   - component: {fileID: 7538920609637150374}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ButtonButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,6 +242,7 @@ MonoBehaviour:
   activationMass: 2
   sinkDepth: 0.8
   timerDuration: 5
+  buttonActivationSound: {fileID: 0}
   initialPositionCaptureDelay: 2
 --- !u!1 &3496469401448231434
 GameObject:
@@ -255,7 +256,7 @@ GameObject:
   - component: {fileID: 4159235524280725491}
   - component: {fileID: 6603658551278587923}
   - component: {fileID: 846273828518213795}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +361,7 @@ GameObject:
   - component: {fileID: 4675179913526173801}
   - component: {fileID: 8828775686448117873}
   - component: {fileID: 932078363738703369}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ButtonBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
