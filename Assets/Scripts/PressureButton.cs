@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PressureButton : Interactable
 {
-    public enum ButtonType { Standard, Timed }
+    public enum ButtonType { Standard, Timed, Continuous, ContinuousDraggable }
     public ButtonType buttonType = ButtonType.Standard; // Select the button type in inspector
     public float activationMass = 2f;
     private Vector3 originalPosition;
@@ -18,7 +18,6 @@ public class PressureButton : Interactable
 
     void Start()
     {
-        // Delay capturing the original position
         StartCoroutine(CaptureOriginalPositionAfterDelay(initialPositionCaptureDelay));
     }
 
@@ -28,48 +27,82 @@ public class PressureButton : Interactable
         originalPosition = transform.position; // Store the position after the delay
     }
 
+    void Update()
+    {
+        if (isPressed && (buttonType == ButtonType.Continuous || buttonType == ButtonType.ContinuousDraggable))
+        {
+            if (!OtherObjectsPresent())
+            {
+                DeactivateButton();
+            }
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!isPressed && other.attachedRigidbody && other.attachedRigidbody.mass >= activationMass)
         {
-            isPressed = true;
-            ToggleState();
-            transform.localPosition -= new Vector3(0, sinkDepth, 0);
-
-            if (buttonType == ButtonType.Timed)
+            if ((buttonType == ButtonType.Continuous && other.CompareTag("Carriable")) ||
+                (buttonType == ButtonType.ContinuousDraggable && other.CompareTag("Draggable")))
             {
-                // Start a coroutine to reset the button after a delay
-                StartCoroutine(ResetButtonAfterDelay(timerDuration));
+                ActivateButton();
             }
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        // No further action needed here since Update() will handle the deactivation
+    }
+
+    void ActivateButton()
+    {
+        isPressed = true;
+        ToggleState();
+        transform.localPosition -= new Vector3(0, sinkDepth, 0);
+        if (buttonType == ButtonType.Timed)
+        {
+            StartCoroutine(ResetButtonAfterDelay(timerDuration));
+        }
+    }
+
+    void DeactivateButton()
+    {
+        ToggleState();
+        ResetButtonPosition();
+        isPressed = false;
+    }
+
+    bool OtherObjectsPresent()
+    {
+        Collider[] colliders = Physics.OverlapBox(transform.position, transform.localScale / 2, Quaternion.identity);
+        foreach (Collider collider in colliders)
+        {
+            if ((collider.CompareTag("Carriable") || collider.CompareTag("Draggable")) && collider.enabled)
+            {
+                return true; // Found another qualifying object
+            }
+        }
+        return false; // No qualifying objects found
     }
 
     public override void ToggleState()
     {
         base.ToggleState(); // Ensure isActive toggle and visual updates
         AudioManager.Instance.PlaySound2D(buttonActivationSound, 1f);
-        if (buttonType == ButtonType.Standard && !isActive)
-        {
-            // If the button is a standard type and gets deactivated, reset its position
-            ResetButtonPosition();
-        }
     }
 
     IEnumerator ResetButtonAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-
-        // Reset the button state and position if it's still active
-        if (isActive)
+        if (isActive && (buttonType == ButtonType.Continuous || buttonType == ButtonType.ContinuousDraggable))
         {
-            ToggleState(); // This will deactivate and update visuals
-            ResetButtonPosition();
+            DeactivateButton();
         }
     }
 
     void ResetButtonPosition()
     {
         transform.position = originalPosition; // Reset to the original position
-        isPressed = false; // Allow reactivation
     }
 }

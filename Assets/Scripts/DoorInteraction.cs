@@ -20,6 +20,7 @@ public class DoorInteraction : MonoBehaviour
     public AudioClip doorOpeningSound;
 
     public Transform exitPoint; // Assign this in the Inspector to the specific exit point of this door
+                                //This will probably need adjustments to fit the next room correctly
 
 
     void Start()

@@ -111,6 +111,13 @@ public class PickUpController : MonoBehaviour
         Rigidbody objectRb = heldObject.GetComponent<Rigidbody>();
         objectRb.isKinematic = true;
 
+        // Disable the collider of the held object to prevent it from affecting player jump
+        Collider objectCollider = heldObject.GetComponent<Collider>();
+        if (objectCollider != null)
+        {
+            objectCollider.enabled = false;
+        }
+
         if (currentIndicator)
         {
             Destroy(currentIndicator);
@@ -132,6 +139,14 @@ public class PickUpController : MonoBehaviour
         heldObject.transform.position = position;
         Rigidbody objectRb = heldObject.GetComponent<Rigidbody>();
         objectRb.isKinematic = false;
+
+        // Re-enable the collider when the object is dropped
+        Collider objectCollider = heldObject.GetComponent<Collider>();
+        if (objectCollider != null)
+        {
+            objectCollider.enabled = true;
+        }
+
         heldObject = null;
 
         if (currentIndicator)

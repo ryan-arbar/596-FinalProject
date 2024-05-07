@@ -11,21 +11,38 @@ public class PuzzleController : MonoBehaviour
         doorsToUnlock = FindObjectsOfType<DoorInteraction>();
     }
 
+    void Update()
+    {
+        CheckPuzzleState();
+    }
+
     public void CheckPuzzleState()
     {
+        bool allActive = true;
         foreach (Interactable interactable in prerequisites)
         {
             if (!interactable.isActive)
             {
-                // If any prerequisite is not active, exit early
-                return;
+                allActive = false;
+                break;
             }
         }
 
-        // If all prerequisites are active, unlock each door in the array
-        foreach (DoorInteraction door in doorsToUnlock)
+        if (allActive)
         {
-            door.UnlockDoor();
+            // If all prerequisites are active, unlock each door in the array
+            foreach (DoorInteraction door in doorsToUnlock)
+            {
+                door.UnlockDoor();
+            }
+        }
+        else
+        {
+            // If any prerequisite is not active, lock the doors
+            foreach (DoorInteraction door in doorsToUnlock)
+            {
+                door.LockDoor();
+            }
         }
     }
 }

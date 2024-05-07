@@ -21,6 +21,7 @@ public enum DoorColor
 {
     Blue,
     Yellow,
+    White_NoRoomSpawn,
 }
 
 public class RoomManager : MonoBehaviour

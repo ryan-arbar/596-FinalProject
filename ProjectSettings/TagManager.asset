@@ -9,6 +9,7 @@ TagManager:
   - CompletionMessage
   - Carriable
   - PickupCube
+  - Draggable
   layers:
   - Default
   - TransparentFX
