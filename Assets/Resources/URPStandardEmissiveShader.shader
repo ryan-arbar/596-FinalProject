@@ -9,6 +9,8 @@ Shader "Custom/URPStandardEmissiveShader"
         _Emission ("Emission", 2D) = "black" {}
         _EmissionColor ("Emission Color", Color) = (1, 1, 1, 1)
         _EmissionIntensity ("Emission Intensity", Float) = 1.0
+        _EmissionGlow ("Glow", Float) = 1.0
+        _EmissionGlowDuration ("Glow Duration", Float) = 5.0
         _ScrollingMask ("Scrolling Mask", 2D) = "white" {}
         _ScrollX ("Scroll Speed X", Float) = 0.1
         _ScrollY ("Scroll Speed Y", Float) = 0.1
@@ -57,11 +59,15 @@ Shader "Custom/URPStandardEmissiveShader"
 
             TEXTURE2D(_MainTex);
             TEXTURE2D(_Emission);
+            TEXTURE2D(_ScrollingMask);
             SAMPLER(sampler_MainTex);
             SAMPLER(sampler_Emission);
+            SAMPLER(sampler_ScrollingMask);
             float4 _Color;
             float4 _EmissionColor;
             float _EmissionIntensity;
+            float _EmissionGlow;
+            float _EmissionGlowDuration;
             float _ScrollX, _ScrollY;
 
             float4 frag(Varyings IN) : SV_Target
@@ -69,7 +75,8 @@ Shader "Custom/URPStandardEmissiveShader"
                 float4 color = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv) * _Color;
                 float2 scrollingUV = IN.uv + float2(_ScrollX, _ScrollY) * _Time.y;
                 float4 emission = SAMPLE_TEXTURE2D(_Emission, sampler_Emission, scrollingUV);
-                color.rgb += emission.rgb * _EmissionColor.rgb * _EmissionIntensity;
+                float glowFactor = sin(_Time.y * 2 * PI / _EmissionGlowDuration) * 0.5 + 0.5;
+                color.rgb += emission.rgb * _EmissionColor.rgb * (_EmissionIntensity + _EmissionGlow * glowFactor);
                 return color;
             }
             ENDHLSL
