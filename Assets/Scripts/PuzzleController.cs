@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PuzzleController : MonoBehaviour
 {
-    public Interactable[] prerequisites; // Assign in the inspector
-    public DoorInteraction[] doorsToUnlock; // Will be automatically assigned
+    public Interactable[] prerequisites;
+    public DoorInteraction[] doorsToUnlock;
 
     void Awake()
     {

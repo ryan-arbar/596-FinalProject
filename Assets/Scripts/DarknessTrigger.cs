@@ -3,8 +3,20 @@ using System.Collections;
 
 public class DarknessTrigger : MonoBehaviour
 {
-    public Light directionalLight;  // Directional light of scene
-    public float fadeDuration = 2.0f;  // Duration of the fade till darkness
+    public Light directionalLight;
+    public float fadeDuration = 2.0f;
+
+    private void Start()
+    {
+        if (directionalLight == null)
+        {
+            GameObject lightGameObject = GameObject.FindGameObjectWithTag("Sun");
+            if (lightGameObject != null)
+            {
+                directionalLight = lightGameObject.GetComponent<Light>();
+            }
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {

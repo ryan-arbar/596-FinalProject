@@ -14,6 +14,8 @@ TagManager:
   - FinalTile
   - Hand
   - WeightScale
+  - Sun
+  - BlackoutScreen
   layers:
   - Default
   - TransparentFX

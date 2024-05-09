@@ -36,6 +36,8 @@ public class RoomManager : MonoBehaviour
     public TMP_Text completionMessageText;
     private HashSet<GameObject> completedRooms = new HashSet<GameObject>();
 
+    public List<string> activationTags;  // Tags for objects to activate post-movement
+    public List<string> exceptionTags;   // Tags for objects to remain active during movement
 
     void Start()
     {
@@ -130,6 +132,7 @@ public class RoomManager : MonoBehaviour
         GameObject nextRoomInstance = Instantiate(nextRoomPrefab, Vector3.down * 50, Quaternion.identity);
         DisableRigidbodies(nextRoomInstance);
         nextRoomInstance.SetActive(true);
+        ToggleActiveState(nextRoomInstance, false);
         StartCoroutine(AlignAndActivateRoom(nextRoomInstance, doorExitPoint));
     }
 
@@ -165,7 +168,6 @@ public class RoomManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
 
         Transform newRoomEntrance = FindDeepChild(nextRoomInstance.transform, "EntrancePoint");
-
         if (newRoomEntrance == null || doorExitPoint == null)
         {
             Debug.LogError("Entrance or specified exit points not found.", this);
@@ -175,8 +177,41 @@ public class RoomManager : MonoBehaviour
         Vector3 positionAdjustment = doorExitPoint.position - newRoomEntrance.position;
         nextRoomInstance.transform.position += new Vector3(positionAdjustment.x, 0, positionAdjustment.z);
 
-        StartCoroutine(RaiseRoom(nextRoomInstance, positionAdjustment.y));
+        yield return StartCoroutine(RaiseRoom(nextRoomInstance, positionAdjustment.y));
+
+        // After the room is raised and positioned, activate tagged objects
+        ToggleActiveState(nextRoomInstance, true);
     }
+
+    private void ToggleActiveState(GameObject room, bool state)
+    {
+        foreach (Transform child in room.GetComponentsInChildren<Transform>(true)) // Include inactive objects
+        {
+            if (exceptionTags.Contains(child.tag))
+                continue;  // Skip exceptions
+
+            if (activationTags.Contains(child.tag))
+            {
+                child.gameObject.SetActive(state);
+                // Additionally, set all child Rigidbody components to non-kinematic if activating
+                if (state == true)
+                {
+                    SetRigidbodiesState(child, false);
+                }
+            }
+        }
+    }
+
+    // Helper method to set the kinematic state of all Rigidbody components in children
+    private void SetRigidbodiesState(Transform parent, bool isKinematic)
+    {
+        Rigidbody[] rigidbodies = parent.GetComponentsInChildren<Rigidbody>();
+        foreach (Rigidbody rb in rigidbodies)
+        {
+            rb.isKinematic = isKinematic;
+        }
+    }
+
 
     private void DisableRigidbodies(GameObject room)
     {

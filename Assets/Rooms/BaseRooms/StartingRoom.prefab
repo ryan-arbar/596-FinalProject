@@ -12695,12 +12695,12 @@ MonoBehaviour:
   isActive: 0
   lineIndicator: {fileID: 7961833101124324726}
   activeMaterial: {fileID: 2100000, guid: 248e59cd025d2614c99a0959878ebac6, type: 2}
-  inactiveMaterial: {fileID: 2100000, guid: df2fad578af9d994fa481ff52b7b73b4, type: 2}
+  inactiveMaterial: {fileID: 2100000, guid: 123a9219dad4b6c48b24fb998f00c88e, type: 2}
   buttonType: 0
   activationMass: 2
   sinkDepth: 0.8
   timerDuration: 5
-  buttonActivationSound: {fileID: 8300000, guid: 7957372f87d07b5418062dbe2375eee3,
+  buttonActivationSound: {fileID: 8300000, guid: 311ec0e3ddc71474eb5f91f03161f401,
     type: 3}
   initialPositionCaptureDelay: 0
 --- !u!1 &4218342537936330457
@@ -25082,7 +25082,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 119
+  m_VersionIndex: 122
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -50059,7 +50059,7 @@ PrefabInstance:
         type: 3}
       propertyPath: doorOpeningSound
       value: 
-      objectReference: {fileID: 8300000, guid: 0edaf95181d57cc418f2dd7dd14da990, type: 3}
+      objectReference: {fileID: 8300000, guid: 438aa3c1164a6b04c86363d56d293891, type: 3}
     - target: {fileID: 2320393558705796700, guid: fd1c2862cf6be3440808e28e1cf2edba,
         type: 3}
       propertyPath: unlockedMaterial

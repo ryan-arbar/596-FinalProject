@@ -3,15 +3,19 @@ using UnityEngine;
 public class IsometricPlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public float runSpeed = 10f; // Run speed
-    public float jumpForce = 7f; // Jump force
-    public bool canRun = false; // Flag for running ability
-    public bool canJump = false; // Flag for jumping ability
+    public float runSpeed = 10f;
+    public float jumpForce = 7f;
+    public bool canRun = false;
+    public bool canJump = false;
     public bool canRotateCamera = true;
 
     [Header("Ground Check Parameters")]
-    [SerializeField] private float checkRadius = 0.4f; // Radius for ground check
+    [SerializeField] private float checkRadius = 0.4f;
     [SerializeField] private float groundCheckDistance = 0.2f; // Distance for ground check
+
+    [Header("Audio")]
+    public AudioClip jumpSound;
+    private AudioSource audioSource;
 
     [Header("Debug")]
     [SerializeField] private bool isGrounded;
@@ -22,6 +26,7 @@ public class IsometricPlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -34,7 +39,7 @@ public class IsometricPlayerController : MonoBehaviour
 
     private void SetMovementVectors()
     {
-        // Update movement vectors based on the camera's orientation
+        // Update movement based on the camera's orientation
         forward = Camera.main.transform.forward;
         forward.y = 0;
         forward.Normalize();
@@ -70,6 +75,10 @@ public class IsometricPlayerController : MonoBehaviour
         if (canJump && Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            if (jumpSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(jumpSound); // Play the jump sound effect
+            }
         }
     }
 
