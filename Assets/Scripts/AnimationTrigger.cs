@@ -7,8 +7,8 @@ public class AnimationTrigger : MonoBehaviour
     public struct MovableObject
     {
         public Animator animator;
-        public float targetY;  // Target Y position
-        public float moveSpeed;  // Speed at which the object should move
+        public float targetY;
+        public float moveSpeed;
     }
 
     public MovableObject[] movableObjects;
@@ -28,6 +28,7 @@ public class AnimationTrigger : MonoBehaviour
         }
     }
 
+    // Just move the object downwards a certain amount over an amount of time
     IEnumerator MoveObjectToY(Transform obj, float targetY, float speed)
     {
         Vector3 startPosition = obj.position;

@@ -2332,7 +2332,8 @@ MonoBehaviour:
   - {fileID: 3882855069863492662}
   gameOverSound: {fileID: 8300000, guid: 7d55c0b0734add1489ee3f3016189f79, type: 3}
   audioSource: {fileID: 930779856947671939}
-  blackoutScreen: {fileID: 0}
+  blackoutScreenPrefab: {fileID: 8242500374684764230, guid: dcb5d97402339cc498a9dbe16fae7334,
+    type: 3}
 --- !u!82 &930779856947671939
 AudioSource:
   m_ObjectHideFlags: 0

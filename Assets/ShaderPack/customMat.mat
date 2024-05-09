@@ -87,7 +87,7 @@ Material:
     - _DstBlend: 0
     - _EmissionGlow: 5
     - _EmissionGlowDuration: 5
-    - _EmissionIntensity: 7
+    - _EmissionIntensity: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
