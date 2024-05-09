@@ -12017,7 +12017,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 197
+  m_VersionIndex: 200
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -12249,7 +12249,7 @@ MonoBehaviour:
   unlockDistance: 2
   animationDuration: 2.5
   targetScale: {x: 0, y: 0, z: 0}
-  doorOpeningSound: {fileID: 8300000, guid: 0edaf95181d57cc418f2dd7dd14da990, type: 3}
+  doorOpeningSound: {fileID: 8300000, guid: 438aa3c1164a6b04c86363d56d293891, type: 3}
   exitPoint: {fileID: 0}
 --- !u!1 &1831526097491050220
 GameObject:
@@ -24429,7 +24429,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 188
+  m_VersionIndex: 191
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -36555,7 +36555,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 191
+  m_VersionIndex: 194
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -49332,7 +49332,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 188
+  m_VersionIndex: 191
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -50446,7 +50446,7 @@ PrefabInstance:
         type: 3}
       propertyPath: buttonActivationSound
       value: 
-      objectReference: {fileID: 8300000, guid: 7957372f87d07b5418062dbe2375eee3, type: 3}
+      objectReference: {fileID: 8300000, guid: 311ec0e3ddc71474eb5f91f03161f401, type: 3}
     - target: {fileID: 8157804811996653621, guid: e706e276427f8f64784f2547377ca7fd,
         type: 3}
       propertyPath: m_Size.y
@@ -50597,7 +50597,7 @@ PrefabInstance:
         type: 3}
       propertyPath: buttonActivationSound
       value: 
-      objectReference: {fileID: 8300000, guid: 7957372f87d07b5418062dbe2375eee3, type: 3}
+      objectReference: {fileID: 8300000, guid: 311ec0e3ddc71474eb5f91f03161f401, type: 3}
     - target: {fileID: 8157804811996653621, guid: e706e276427f8f64784f2547377ca7fd,
         type: 3}
       propertyPath: m_Size.y

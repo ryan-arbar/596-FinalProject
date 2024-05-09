@@ -2131,7 +2131,7 @@ MonoBehaviour:
   activationMass: 2
   sinkDepth: 0.8
   timerDuration: 5
-  buttonActivationSound: {fileID: 8300000, guid: 7957372f87d07b5418062dbe2375eee3,
+  buttonActivationSound: {fileID: 8300000, guid: 311ec0e3ddc71474eb5f91f03161f401,
     type: 3}
   initialPositionCaptureDelay: 2
 --- !u!1 &2450225739713007979
@@ -14487,7 +14487,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 104
+  m_VersionIndex: 107
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -15608,7 +15608,7 @@ MonoBehaviour:
   unlockDistance: 2
   animationDuration: 2.5
   targetScale: {x: 0, y: 0, z: 0}
-  doorOpeningSound: {fileID: 8300000, guid: 0edaf95181d57cc418f2dd7dd14da990, type: 3}
+  doorOpeningSound: {fileID: 8300000, guid: 438aa3c1164a6b04c86363d56d293891, type: 3}
   exitPoint: {fileID: 1427560934841269088}
 --- !u!1 &4483302902358188193
 GameObject:
@@ -15863,7 +15863,7 @@ MonoBehaviour:
   activationMass: 2
   sinkDepth: 0.8
   timerDuration: 5
-  buttonActivationSound: {fileID: 8300000, guid: 7957372f87d07b5418062dbe2375eee3,
+  buttonActivationSound: {fileID: 8300000, guid: 311ec0e3ddc71474eb5f91f03161f401,
     type: 3}
   initialPositionCaptureDelay: 2
 --- !u!1 &4745982403117023928
@@ -65473,7 +65473,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 69
+  m_VersionIndex: 72
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -65626,7 +65626,7 @@ MonoBehaviour:
   activationMass: 2
   sinkDepth: 0.8
   timerDuration: 5
-  buttonActivationSound: {fileID: 8300000, guid: 7957372f87d07b5418062dbe2375eee3,
+  buttonActivationSound: {fileID: 8300000, guid: 311ec0e3ddc71474eb5f91f03161f401,
     type: 3}
   initialPositionCaptureDelay: 2
 --- !u!1 &7194618414433338827
@@ -78220,7 +78220,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 56
+  m_VersionIndex: 59
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -126258,7 +126258,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 69
+  m_VersionIndex: 72
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -127542,7 +127542,7 @@ MonoBehaviour:
   activationMass: 2
   sinkDepth: 0.8
   timerDuration: 5
-  buttonActivationSound: {fileID: 8300000, guid: 7957372f87d07b5418062dbe2375eee3,
+  buttonActivationSound: {fileID: 8300000, guid: 311ec0e3ddc71474eb5f91f03161f401,
     type: 3}
   initialPositionCaptureDelay: 2
 --- !u!1 &9039210695362890746

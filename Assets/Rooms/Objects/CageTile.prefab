@@ -5770,6 +5770,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: f71a7f1d88a2c8044aeeae0a9b486fa1, type: 2}
+    - target: {fileID: 5866666021909216657, guid: a23dcfbedaee8dd409844dd9be3cf9ef,
+        type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5880,6 +5885,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: adca812fc868f8c4e89f0fae52606163, type: 2}
+    - target: {fileID: 5866666021909216657, guid: a23dcfbedaee8dd409844dd9be3cf9ef,
+        type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
