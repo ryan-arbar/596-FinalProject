@@ -106,7 +106,7 @@ public class DoorInteraction : MonoBehaviour
 
         isLocked = false;
         UpdateDoorBlockColor(unlockedMaterial);
-        Debug.Log("Door unlocked.", this);
+        //Debug.Log("Door unlocked.", this);
     }
 
 
@@ -186,7 +186,6 @@ public class DoorInteraction : MonoBehaviour
                 Debug.LogError("Current room is null in RoomManager.");
             }
 
-            // Assuming you might still need to notify the RoomManager to prepare for transitioning to a new room.
             roomManager.PrepareForNewRoom(gameObject);
         }
     }

@@ -10,7 +10,6 @@ public class PressureButton : Interactable
     public float sinkDepth = 0.8f;
     private bool isPressed = false;
     public float timerDuration = 5f; // Duration for timed buttons
-
     public AudioClip buttonActivationSound;
 
     // Delay for capturing the original position to account for initial setup
@@ -29,6 +28,7 @@ public class PressureButton : Interactable
 
     void Update()
     {
+        // When the object to activate the button is removed, deactivate the button
         if (isPressed && (buttonType == ButtonType.Continuous || buttonType == ButtonType.ContinuousDraggable))
         {
             if (!OtherObjectsPresent())
@@ -42,17 +42,13 @@ public class PressureButton : Interactable
     {
         if (!isPressed && other.attachedRigidbody && other.attachedRigidbody.mass >= activationMass)
         {
-            if ((buttonType == ButtonType.Continuous && other.CompareTag("Carriable")) ||
-                (buttonType == ButtonType.ContinuousDraggable && other.CompareTag("Draggable")))
-            {
-                ActivateButton();
-            }
+            ActivateButton();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        // No further action needed here since Update() will handle the deactivation
+        
     }
 
     void ActivateButton()
@@ -60,6 +56,8 @@ public class PressureButton : Interactable
         isPressed = true;
         ToggleState();
         transform.localPosition -= new Vector3(0, sinkDepth, 0);
+        Debug.Log("Button pressed");
+
         if (buttonType == ButtonType.Timed)
         {
             StartCoroutine(ResetButtonAfterDelay(timerDuration));
@@ -68,9 +66,19 @@ public class PressureButton : Interactable
 
     void DeactivateButton()
     {
+        isPressed = false;
         ToggleState();
         ResetButtonPosition();
-        isPressed = false;
+        Debug.Log("Button deactivated");
+    }
+
+    IEnumerator ResetButtonAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (isPressed) // Ensure the button is still pressed before deactivating
+        {
+            DeactivateButton();
+        }
     }
 
     bool OtherObjectsPresent()
@@ -80,25 +88,16 @@ public class PressureButton : Interactable
         {
             if ((collider.CompareTag("Carriable") || collider.CompareTag("Draggable")) && collider.enabled)
             {
-                return true; // Found another qualifying object
+                return true;
             }
         }
-        return false; // No qualifying objects found
+        return false;
     }
 
     public override void ToggleState()
     {
         base.ToggleState(); // Ensure isActive toggle and visual updates
         AudioManager.Instance.PlaySound2D(buttonActivationSound, 1f);
-    }
-
-    IEnumerator ResetButtonAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        if (isActive && (buttonType == ButtonType.Continuous || buttonType == ButtonType.ContinuousDraggable))
-        {
-            DeactivateButton();
-        }
     }
 
     void ResetButtonPosition()

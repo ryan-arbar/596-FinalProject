@@ -36,6 +36,8 @@ public class RoomManager : MonoBehaviour
     public TMP_Text completionMessageText;
     private HashSet<GameObject> completedRooms = new HashSet<GameObject>();
 
+    public string[] kinematicTags; // Tags of objects to be made kinematic during room spawn
+    public string[] kinematicExceptionTags; // Tags of objects that should not be made kinematic
 
     void Start()
     {
@@ -128,10 +130,42 @@ public class RoomManager : MonoBehaviour
         }
 
         GameObject nextRoomInstance = Instantiate(nextRoomPrefab, Vector3.down * 50, Quaternion.identity);
-        DisableRigidbodies(nextRoomInstance);
+        SetRigidbodyState(nextRoomInstance, true); // Set rigidbodies to kinematic during spawn
         nextRoomInstance.SetActive(true);
         StartCoroutine(AlignAndActivateRoom(nextRoomInstance, doorExitPoint));
     }
+
+    private void SetRigidbodyState(GameObject room, bool isKinematic)
+    {
+        Rigidbody[] rigidbodies = room.GetComponentsInChildren<Rigidbody>();
+        foreach (Rigidbody rb in rigidbodies)
+        {
+            if (ShouldBeKinematic(rb.gameObject))
+            {
+                rb.isKinematic = isKinematic;
+            }
+        }
+    }
+
+    private bool ShouldBeKinematic(GameObject obj)
+    {
+        foreach (string tag in kinematicExceptionTags)
+        {
+            if (obj.CompareTag(tag))
+            {
+                return false; // Do not make kinematic if it matches an exception tag
+            }
+        }
+        foreach (string tag in kinematicTags)
+        {
+            if (obj.CompareTag(tag))
+            {
+                return true; // Make kinematic if it matches a kinematic tag
+            }
+        }
+        return false; // Default is not kinematic if no tags match
+    }
+
 
     private void CheckAllRoomsCompleted()
     {
@@ -176,6 +210,7 @@ public class RoomManager : MonoBehaviour
         nextRoomInstance.transform.position += new Vector3(positionAdjustment.x, 0, positionAdjustment.z);
 
         StartCoroutine(RaiseRoom(nextRoomInstance, positionAdjustment.y));
+        EnableRigidbodies(nextRoomInstance);
     }
 
     private void DisableRigidbodies(GameObject room)
@@ -189,11 +224,7 @@ public class RoomManager : MonoBehaviour
 
     private void EnableRigidbodies(GameObject room)
     {
-        Rigidbody[] rigidbodies = room.GetComponentsInChildren<Rigidbody>();
-        foreach (Rigidbody rb in rigidbodies)
-        {
-            rb.isKinematic = false; // Re-enable physics by making them non-kinematic
-        }
+        SetRigidbodyState(room, false); // Reset rigidbodies to non-kinematic after room is set
     }
 
 

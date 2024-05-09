@@ -64,7 +64,7 @@ public abstract class Interactable : MonoBehaviour
         }
         else
         {
-            Debug.LogError("DoorInteraction or doorBlock not found", this);
+            //Debug.LogError("DoorInteraction or doorBlock not found", this);
         }
     }
 

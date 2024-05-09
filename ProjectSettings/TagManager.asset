@@ -10,6 +10,10 @@ TagManager:
   - Carriable
   - PickupCube
   - Draggable
+  - GroundTile
+  - FinalTile
+  - Hand
+  - WeightScale
   layers:
   - Default
   - TransparentFX
@@ -23,7 +27,7 @@ TagManager:
   - Indicator
   - Trigger
   - Carriable
-  - 
+  - GroundSpawning
   - 
   - 
   - 
