@@ -5,22 +5,34 @@ public class FinalTile : MonoBehaviour
 {
     public float loweringSpeed = 5f;
     public float lowerToY = -5f;
+    public Animator[] animators;  // Array of animators to play animations
+    public AudioClip gameOverSound;  // Sound effect to play at the end
+    public AudioSource audioSource;  // Audio source component for playing sound
+    public GameObject blackoutScreen;  // The object that will be toggled (e.g., a blackout or fade panel)
+
+    private bool hasTriggered = false;  // Flag to check if the trigger has already been activated
+
+    void Start()
+    {
+        // Attempt to find the blackout screen by tag and report status
+        blackoutScreen = GameObject.FindGameObjectWithTag("BlackoutScreen");
+        if (blackoutScreen == null)
+        {
+            Debug.LogError("Blackout screen not found. Make sure it's tagged 'BlackoutScreen'.");
+        }
+        else
+        {
+            Debug.Log("Blackout screen successfully found.");
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !hasTriggered)
         {
-            // Make the player a child of this tile
-            other.transform.SetParent(transform);
-
-            // Start lowering the tile
+            hasTriggered = true;  // Set the flag to true to prevent reactivation
+            other.transform.SetParent(transform);  // Make the player a child of this tile
             StartLowering();
-
-            // If it's the final tile, you may want to call a specific function
-            if (gameObject.CompareTag("FinalTile"))
-            {
-                EndGame();
-            }
         }
     }
 
@@ -44,24 +56,36 @@ public class FinalTile : MonoBehaviour
         }
 
         transform.position = end;
-
-        /*// Optionally unparent the player when the lowering completes
-        // This might be necessary if the tile despawns or you have other gameplay mechanics to consider.
-        if (transform.childCount > 0)
-        {
-            foreach (Transform child in transform)
-            {
-                if (child.CompareTag("Player"))
-                {
-                    child.SetParent(null);
-                }
-            }
-        }*/
+        ActivateEndGameEffects();
     }
 
-    void EndGame()
+    void ActivateEndGameEffects()
     {
-        // Logic for ending the game or transitioning to another scene
-        Debug.Log("Game Over! Tile has lowered.");
+        foreach (var animator in animators)
+        {
+            animator.enabled = true;  // Enable the animator
+            animator.SetTrigger("PlayAnimation");  // Trigger the animation
+        }
+
+        if (audioSource && gameOverSound)
+        {
+            audioSource.PlayOneShot(gameOverSound);  // Play the sound effect
+        }
+
+        StartCoroutine(ActivateBlackoutScreenAfterDelay(6f));  // Activate the blackout screen after a delay
+    }
+
+    IEnumerator ActivateBlackoutScreenAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);  // Wait for the specified delay
+        if (blackoutScreen != null)
+        {
+            blackoutScreen.SetActive(true);  // Activate the blackout screen
+            Debug.Log("Blackout screen has been activated.");
+        }
+        else
+        {
+            Debug.LogError("Failed to activate the blackout screen because it is not assigned.");
+        }
     }
 }
