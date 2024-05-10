@@ -1,8 +1,7 @@
 # 596-FinalProject
 
-Work in progress game Cubelet
+Work in progress game 'Cubelet' built off of gamejam version by Ryan Arbar: https://dampler.itch.io/cubelet
 
-Primarily done by Ryan Arbar
+Group project (kinda, but not really)
 
-Video Gameplay Demonstration:
-https://youtu.be/OFsXJJT9wD8
+Gameplay demonstration video: https://youtu.be/OFsXJJT9wD8
